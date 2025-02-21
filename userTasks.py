@@ -2,15 +2,15 @@
 import random
 
 class userTask:
-    def __init__(task, ID, name, notes = None, tags = None, dueDate = None):
-        task.ID = ID
-        task.name = name
-        task.notes = notes
-        task.tags = tags
-        task.dueDate = dueDate
+    def __init__(self, ID, name, notes = None, tags = None, dueDate = None):
+        self.ID = ID
+        self.name = name
+        self.notes = notes
+        self.tags = tags
+        self.dueDate = dueDate
     
-    def __str__(task):
-        return f" Task ID: {task.ID} \n Task Name: {task.name} \n Task Notes: {task.notes} \n Task Tags: {task.tags} \n Task Due Date: {task.dueDate}"
+    def __str__(self):
+        return f" Task ID: {self.ID} \n Task Name: {self.name} \n Task Notes: {self.notes} \n Task Tags: {self.tags} \n Task Due Date: {self.dueDate}"
 
 def createUserTask(userTaskName):
     global newTask

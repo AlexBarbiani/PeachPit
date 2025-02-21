@@ -1,10 +1,10 @@
-import userTasks
-import userCharacter
+import userTasks as task
+import userCharacter as char
 
-testCharacter = userCharacter.userCharacter()
+testCharacter = char.userCharacter()
 
 userTaskName = input("Hello! Please enter your task name:")
-userTasks.createUserTask(userTaskName)
+task.createUserTask(userTaskName)
 
 print(testCharacter)
-print(userTasks.newTask)
+print(task.newTask)
