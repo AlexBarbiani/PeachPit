@@ -1,5 +1,13 @@
 # PeachPit
-tl;dr - PeachPit is a productivity app created for video game enthusiasts. It is intended as a personal project to improve my programming skills. 
+Purpose -
+
+tl;dr - PeachPit is a productivity app created for video game enthusiasts. It is intended as a personal project to improve my programming skills. Long form explanation at the bottom.
+
+Dependencies-
+
+Listed in requirements.txt. To install:
+
+pip install -r requirements.txt
 
 --
 
