@@ -2,7 +2,6 @@
 import json
 import os
 
-
 class UserCharacter:
     def __init__(self, char_class:str ="Druid", level:int=1, exp:int=0):
         self._char_class = char_class

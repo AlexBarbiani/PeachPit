@@ -48,35 +48,60 @@ completed_tasks_filename ="completed_tasks.json"
 def initialize_task_list():
     global task_list
     task_list = load_user_tasks()
-    if task_list is None:
-        default_tasks = UserTask(
+    if not task_list:
+        default_tasks = [
+            UserTask(
                 "74a5b43d-0ae3-4ddc-af20-9b7c5c46e792",
                 "Pick up Nintendo Switch from repair shop",
                 "No more Joy-con drift!",
-        )
-        save_user_tasks(default_tasks)
-        default_tasks = UserTask("41fd9a7b-b5fe-4144-8f2a-8343b1541d7c",
+                ),
+            UserTask("41fd9a7b-b5fe-4144-8f2a-8343b1541d7c",
                 "Buy groceries",
                 "Buy lettuce, almonds, cranberries, cucumbers, and a vinaigrette for the salad.",
-        )
-        save_user_tasks(default_tasks)
+                ),
         
-        default_tasks = UserTask("cded018c-26e3-45f3-8579-6182c551e63c",
+            UserTask("cded018c-26e3-45f3-8579-6182c551e63c",
                 "Win Worlds",
                 "Faker! What was that?!",
-        )
+                )
+        ]
         save_user_tasks(default_tasks)
+        
         task_list = load_user_tasks()
 
+""" 
+def initialize_task_list():
+    global task_list
+    task_list = load_user_tasks()
+    if not task_list:
+        default_task_name =  "Pick up Nintendo Switch from repair shop"
+        add_user_tasks(default_task_name)
 
-def load_user_tasks(filename=task_filename):
+        default_task_name = "Buy groceries"
+        add_user_tasks(default_task_name)
+        
+        default_task_name = "Win Worlds"
+        add_user_tasks(default_task_name)
+        
+        task_list = load_user_tasks() """
+
+""" def load_user_tasks(filename=task_filename):
     if not os.path.exists(filename):
         return None
     with open(filename, "r") as file:
         tasks_data = json.load(file)
         return [UserTask.from_dict(task_data) for task_data in tasks_data]
     file.close()
+ """
 
+def load_user_tasks(filename=task_filename):
+    try:
+        with open(filename, "r") as file:
+            tasks_data = json.load(file)
+            return [UserTask.from_dict(task_data) for task_data in tasks_data]
+        file.close()
+    except (FileNotFoundError, json.JSONDecodeError):
+        open(filename, "w")
 
 def save_user_tasks(tasks, filename=task_filename):
     with open(filename, "w") as file:
@@ -192,6 +217,7 @@ def complete_user_tasks(incoming_ID):
             save_user_tasks(task_list)
             char.UserCharacter.add_exp(char.character, exp)
             print(f"Task with the ID {incoming_ID} has been completed. You gained {exp} exp!")
+            print_user_tasks()
 
         else:
             print(f"I couldn't find a task with the ID {incoming_ID}. Are you sure it's correct?")
@@ -221,6 +247,7 @@ def delete_user_tasks(incoming_ID):
             task_list.remove(task_to_delete)
             save_user_tasks(task_list) 
             print(f"Task with the ID {incoming_ID} has been deleted.")
+            print_user_tasks()
         else:
             print(f"I couldn't find a task with the ID {incoming_ID}. Are you sure it's correct?")
             query_delete_user_tasks()
@@ -228,9 +255,3 @@ def delete_user_tasks(incoming_ID):
         print(f"An error occurred: {e}")
 
     print_user_tasks
-
-#This is used only for the initialization to show a user what they can do with their tasks
-
-def custom_user_task(task_id, task_name, task_notes):
-    new_user_task = UserTask(ID=task_id, name=task_name, notes=task_notes)
-    return new_user_task

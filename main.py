@@ -7,10 +7,6 @@ import randomQuote as quote
 (preferred in Python).
 • Pascal Case Use for class names"""
 
-'''  try:
-    except Exception as e:
-        print(f"An error occurred: {e}")'''
-
 def show_command_menu():
  print("\nWelcome to Peach Pit! Please enter the number of the function you want to perform:\n"
         "\n1) Show command menu."
@@ -60,8 +56,6 @@ def main():
             print("Sorry, I didn't understand that! Make sure you put in a valid number. \n"
                   f"(The exact error was '{e}' if you're interested.)")
             continue
-        
-    
 
 if __name__ == "__main__":
     main()

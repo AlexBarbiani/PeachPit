@@ -24,6 +24,3 @@ def quote_picker():
 
     chosen_quote = random.randint(0, x - 1)
     print(f'\n{quote_list[chosen_quote]}\n')
-
-
-# test quote picker logic

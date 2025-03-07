@@ -1,7 +1,6 @@
 # this module will, in the future, be a pomodoro timer included in the application
 from datetime import time
 
-
 class PomodoroTimer:
     def __init__(
         self,
@@ -32,7 +31,7 @@ class PomodoroTimer:
         incoming_break_cadence = input(
             "Please input the number of regular breaks you would like before starting a long break. If you do not want to include long breaks, press Enter:"
         )
-        if incoming_break_cadence != "":
+        if incoming_break_cadence:
             self.break_cadence = incoming_break_cadence
             incoming_long_break_timer = input(
                 "Please input the length of the long break:"
